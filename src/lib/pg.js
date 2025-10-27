@@ -22,7 +22,7 @@ if (!connectionString) {
 console.log(connectionString)
 const pool = new Pool({
   connectionString,
-}).then(()=>console.log("DATABASE connected !*"));
+});
 
 
 // export default pool;
