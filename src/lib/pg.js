@@ -1,15 +1,21 @@
 // db.js
 import pkg from 'pg';
 const { Pool } = pkg;
-// import dotenv from 'dotenv'
-// dotenv.config()
+
+
+import dotenv from 'dotenv';
+dotenv.config();
+
+
 // postgres://user:password@localhost:5432/mydatabase
 // process.env.DATABASE_URL ||
-const connectionString = process.env.DATABASE_URL ||'postgres://rohitsaini:mypassword@localhost:5432/mydatabase';
+const connectionString = process.env.DATABASE_URL
+//  'postgres://rohitsaini:mypassword@localhost:5432/mydatabase';
 console.log(connectionString)
 const pool = new Pool({
   connectionString,
 });
+
 
 // export default pool;
 
