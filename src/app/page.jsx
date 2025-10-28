@@ -1,12 +1,13 @@
-// import { blogPosts } from '@/lib/blogData';
-import { fetchBlogs } from '@/lib/pg';
+// import { fetchBlogs } from '@/lib/pg';
+import { fetchBlogs } from '@/lib/fetchPosts';
 import Link from 'next/link';
 
 export const dynamic = 'force-dynamic'; // SSR
 
 export default async function BlogPage() {
+  // const blogs = await fetchBlogs();
   const blogs = await fetchBlogs();
-  console.log(blogs)
+  console.log("blogs frontend ;",blogs)
 
   return (
     <div className="max-w-2xl mx-auto px-4 py-10">
