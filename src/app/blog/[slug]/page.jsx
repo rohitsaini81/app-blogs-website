@@ -1,5 +1,5 @@
 import { blogPosts } from '@/lib/blogData';
-import { fetchBlogPostContent } from '@/lib/pg';
+import { fetchBlogPost, fetchBlogPostContent } from '@/lib/pg';
 import { notFound } from 'next/navigation';
 
 export default async function BlogPost({ params }) {
