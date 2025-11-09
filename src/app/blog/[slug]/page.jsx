@@ -1,4 +1,3 @@
-import { blogPosts } from '@/lib/blogData';
 import { fetchBlogPost, fetchBlogPostContent } from '@/lib/fetchPosts.js';
 import { notFound } from 'next/navigation';
 
@@ -8,7 +7,6 @@ export default async function BlogPost({ params }) {
     const { slug } = await params;
   console.log('Route params:', slug);
 
-  // const post = blogPosts.find((p) => p.slug === params.slug);
   const post = await fetchBlogPost(slug)
   const contentObject = await fetchBlogPostContent(post.id)
   console.log(typeof(contentObject.content))
