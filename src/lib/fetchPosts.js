@@ -3,8 +3,6 @@
 // Create a model (maps to a MongoDB collection)
 
 import { createClient } from '@supabase/supabase-js';
-import dotenv from "dotenv";
-dotenv.config();
 
 // Load from environment variables (recommended)
 const SUPABASE_URL = process.env.SUPABASE_URL;

@@ -1,48 +1,110 @@
+"use client"
 // import { fetchBlogs } from '@/lib/pg.js';
 import Link from 'next/link';
-import {fetchBlogs} from "@/lib/fetchPosts.js"
+import { fetchBlogs } from "@/lib/fetchPosts.js"
+
+import { useState } from 'react';
+import Navbar from '@/components/Navbar';
+import Hero from '@/components/Hero';
+import Applications from '@/components/Applications';
 export const dynamic = 'force-dynamic'; // SSR
 
-export default async function BlogPage() {
-  const blogs = await fetchBlogs();
-  // const blogs = await fetchBlogs();
-  console.log("blogs frontend ;",blogs)
+
+
+
+// export default async function BlogPage() {
+//   const [selectedCategory, setSelectedCategory] = useState('Windows');
+
+
+//   return (
+//     <div className="max-w-2xl mx-auto px-4 py-10">
+//               <Navbar/>
+//       <h1 className="text-4xl font-bold mb-8">Latest blogs</h1>
+//       <div className="space-y-6">
+//       <Hero selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
+//       <Applications />
+//       </div>
+//     </div>
+//   );
+// }
+
+
+
+export default function Home() {
+  const [selectedCategory, setSelectedCategory] = useState('Windows');
+
+  const windowsAppsData = [
+    {
+      title: 'Microsoft Office 2021-2024 Professional Plus',
+      description: 'The latest version of the popular productivity suite',
+      category: 'Office & PDF',
+      icon: '/office-logo.png',
+      os: 'Windows',
+      downloads: 747299,
+      reputation: 4,
+      size: '5.59GB',
+      featured: false,
+    },
+    {
+      title: 'Microsoft Activation Scripts 3.9',
+      description: 'Virus Free Windows and Office Activator',
+      category: 'Tools & Utilities',
+      icon: '/cmd-logo.png',
+      os: 'Windows',
+      downloads: 324395,
+      reputation: 4,
+      size: '1.0MB',
+      featured: true,
+    },
+    {
+      title: 'ON1 Photo RAW 2026.1 v20.1.0.17725',
+      description: 'Photo Editor and Lightroom Alternative',
+      category: 'Graphics & Design',
+      icon: '/on1-logo.png',
+      os: 'Windows',
+      downloads: 68915,
+      reputation: 4,
+      size: '459MB',
+      featured: false,
+    },
+  ];
+
+  const pcGames = [
+    {
+      title: 'Grand Theft Auto GTA 5',
+      category: 'PC Games',
+      size: '63.3GB',
+      img: '/gta5.png',
+    },
+    {
+      title: 'Car For Sale Simulator 2023',
+      category: 'PC Games',
+      size: '2.6GB',
+      img: '/car-sale.png',
+    },
+    {
+      title: 'Supermarket Simulator',
+      category: 'PC Games',
+      size: '963MB',
+      img: '/supermarket.png',
+    },
+    {
+      title: 'Lossless Scaling',
+      category: 'PC Games',
+      size: '69MB',
+      img: '/lossless-scaling.png',
+    },
+  ];
+
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-10">
-      <h1 className="text-4xl font-bold mb-8">Latest blogs</h1>
-      <div className="space-y-6">
-        {blogs.map((post) => (
-          <Link
-            key={post.id}
-            href={`/blog/${post.title}`}
-            className="flex gap-4 hover:bg-gray-50 p-4 rounded-xl transition"
-          >
-            {post.thumbnail_url ? (
-              <img
-                src={post.thumbnail_url}
-                alt={post.title}
-                className="w-28 h-28 rounded-xl object-cover flex-shrink-0"
-              />
-            ) : (
-              <div></div>
-            )}
-
-            <div className="flex flex-col justify-between">
-              <div>
-                <h2 className="text-xl font-semibold">{post.title}</h2>
-                <p className="text-sm text-gray-600 mt-1">{post.excerpt}</p>
-              </div>
-              <span className="text-xs text-gray-400 mt-2">{post.author} 2 min read</span>
-              <div className="flex items-center mt-2">
-                <span className="text-sm text-gray-500">{post.likes} Likes</span>
-                <span className="text-sm text-gray-500 ml-4">{post.dislikes} Dislikes</span>
-                <span className="text-sm text-gray-500 ml-4">{post.postedAt}</span>
-                </div>
-            </div>
-          </Link>
-        ))}
-      </div>
+    <div className="min-h-screen bg-gray-50">
+      <Hero selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
+      <Applications windowsApps={windowsAppsData} pcGames={pcGames} />
     </div>
   );
 }
+
+
+
+
