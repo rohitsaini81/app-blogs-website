@@ -8,6 +8,7 @@ const categories = [
   { name: 'PC Games', icon: 'gamepad' },
   { name: 'Ebooks', icon: 'book' },
   { name: 'Video Courses', icon: 'video-camera' },
+  { name: 'blogs', icon : 'blog-icon'}
 ];
 
 const Icon = ({ name }) => {
@@ -34,8 +35,9 @@ export default function Hero({ selectedCategory, setSelectedCategory }) {
     <div className="bg-white p-4 border-b border-gray-200">
       <div className="flex space-x-1 overflow-x-auto">
         {categories.map((cat, idx) => (
-          <button
-            key={idx}
+<a href={`/${cat.name}`} key={idx}>
+            <button
+            // key={idx}
             onClick={() => setSelectedCategory(cat.name)}
             className={`flex items-center space-x-2 px-4 py-3 whitespace-nowrap border ${
               selectedCategory === cat.name
@@ -49,6 +51,7 @@ export default function Hero({ selectedCategory, setSelectedCategory }) {
               <span className="ml-1 text-yellow-500 text-xs font-bold">👑</span>
             )}
           </button>
+</a>
         ))}
       </div>
     </div>
