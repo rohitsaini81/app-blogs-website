@@ -27,9 +27,11 @@ export async function generateMetadata({ params }: Params) {
   };
 }
 
-export default function GameDetailPage({ params }: Params) {
-  const gameId = Number(params.id);
-  const game = gamesDB.find(g => g.id === gameId);
+
+export default async function GameDetailPage({ params }: Params) {
+  const { id } = await params; // <-- ✔️ await the promise
+
+  const game = gamesDB.find(g => g.id == id);
 
   if (!game) {
     notFound();
