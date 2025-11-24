@@ -31,7 +31,8 @@ export async function generateMetadata({ params }: Params) {
 export default async function GameDetailPage({ params }: Params) {
   const { id } = await params; // <-- ✔️ await the promise
 
-  const game = gamesDB.find(g => g.id == id);
+  const gameId = Number(id);
+  const game = gamesDB.find(g => g.id === gameId);
 
   if (!game) {
     notFound();
