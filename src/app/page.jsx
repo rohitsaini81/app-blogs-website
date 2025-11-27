@@ -5,7 +5,7 @@ import { fetchBlogs } from "@/lib/fetchPosts.js"
 
 import { useState } from 'react';
 import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
+// import Hero from '@/components/Hero';
 import Applications from '@/components/Applications';
 export const dynamic = 'force-dynamic'; // SSR
 
@@ -99,7 +99,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Hero selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
+      {/* <Hero selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} /> */}
       <Applications windowsApps={windowsAppsData} pcGames={pcGames} />
     </div>
   );

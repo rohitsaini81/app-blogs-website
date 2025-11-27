@@ -1,7 +1,8 @@
 import Navbar from "@/components/Navbar";
 import "./globals.css";
-
+import Hero from "../components/Hero"
 export default function RootLayout({ children }) {
+  
   return (
     <html lang="en">
       <head>
@@ -29,6 +30,7 @@ At TechInve, we’re building the most comprehensive platform to explore, organi
       </head>
       <body>
         <Navbar />
+    <Hero />
         <main className="pt-16">{children}</main>
       </body>
     </html>

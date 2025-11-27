@@ -40,7 +40,7 @@ export default function Hero() {
     <div className="bg-white p-4 border-b border-gray-200">
       <div className="flex space-x-2 overflow-x-auto">
         {categories.map((cat) => (
-          <Link key={cat.name} href={`/${cat.name}`} passHref>
+          <Link key={cat.name} href={`/apps/${cat.name}`} passHref>
             <button
               onClick={() => setSelectedCategory(cat.name)}
               className={`flex items-center space-x-2 px-4 py-3 whitespace-nowrap border rounded-md border-gray-300 transition ${
