@@ -4,14 +4,14 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 
 const categories = [
-  { name: 'Windows', icon: 'windows' },
-  { name: 'Mac', icon: 'apple' },
-  { name: 'Android Apps', icon: 'android' },
-  { name: 'Android Games', icon: 'android' },
-  { name: 'PC Games', icon: 'gamepad' },
-  { name: 'Ebooks', icon: 'book' },
-  { name: 'Video Courses', icon: 'video-camera' },
-  { name: 'blogs', icon: 'blog-icon' },
+  { name: 'Windows', icon: 'windows', endpoint:"/apps" },
+  { name: 'Mac', icon: 'apple', endpoint:"/apps" },
+  { name: 'Android Apps', icon: 'android', endpoint:"/apps" },
+  { name: 'Android Games', icon: 'android', endpoint:"/apps" },
+  { name: 'PC Games', icon: 'gamepad', endpoint:"/apps" },
+  { name: 'Ebooks', icon: 'book', endpoint:"/apps" },
+  { name: 'Video Courses', icon: 'video-camera', endpoint:"/apps" },
+  { name: 'blogs', icon: 'blog-icon', endpoint:"/blogs" },
 ];
 
 const Icon = ({ name }) => {
@@ -40,7 +40,7 @@ export default function Hero() {
     <div className="bg-white p-4 border-b border-gray-200">
       <div className="flex space-x-2 overflow-x-auto">
         {categories.map((cat) => (
-          <Link key={cat.name} href={`/apps/${cat.name}`} passHref>
+          <Link key={cat.name} href={`${cat.endpoint}/${cat.name=="blogs"?"":cat.name}`} passHref>
             <button
               onClick={() => setSelectedCategory(cat.name)}
               className={`flex items-center space-x-2 px-4 py-3 whitespace-nowrap border rounded-md border-gray-300 transition ${

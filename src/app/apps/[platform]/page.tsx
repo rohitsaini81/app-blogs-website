@@ -1,10 +1,101 @@
 import { notFound } from 'next/navigation';
-
+import {fetchApps} from "@/lib/fetchPosts.js"
 export default async function Apps({ params }) {
 
 
-    const { platform } = await params;
+  // const data = [
+  //   {
+  //     hTitle: "Termux",
+  //     app_icon: "https://picsum.photos/seed/app",
+  //     category: "Coding, hacking",
+  //     size_mb: "112",
+  //     description: "this app is terminal emulator for coding and hacking in android os",
+  //     downloads: "12m",
+  //     rating: "⭐ 4.",
+  //     download_button: "http://github.com"
+  //   },
+  //   {
+  //     hTitle: "Termux",
+  //     app_icon: "https://picsum.photos/seed/app",
+  //     category: "Coding, hacking",
+  //     size_mb: "112",
+  //     description: "this app is terminal emulator for coding and hacking in android os",
+  //     downloads: "12m",
+  //     rating: "⭐ 4.",
+  //     download_button: "http://github.com"
+  //   },
+  //   {
+  //     hTitle: "Termux",
+  //     app_icon: "https://picsum.photos/seed/app",
+  //     category: "Coding, hacking",
+  //     size_mb: "112",
+  //     description: "this app is terminal emulator for coding and hacking in android os",
+  //     downloads: "12m",
+  //     rating: "⭐ 4.",
+  //     download_button: "http://github.com"
+  //   },
+
+  //   {
+  //     hTitle: "Termux",
+  //     app_icon: "https://picsum.photos/seed/app",
+  //     category: "Coding, hacking",
+  //     size_mb: "112",
+  //     description: "this app is terminal emulator for coding and hacking in android os",
+  //     downloads: "12m",
+  //     rating: "⭐ 4.",
+  //     download_button: "http://github.com"
+  //   },
+
+  //   {
+  //     hTitle: "Termux",
+  //     app_icon: "https://picsum.photos/seed/app",
+  //     category: "Coding, hacking",
+  //     size_mb: "112",
+  //     description: "this app is terminal emulator for coding and hacking in android os",
+  //     downloads: "12m",
+  //     rating: "⭐ 4.",
+  //     download_button: "http://github.com"
+  //   },
+
+  //   {
+  //     hTitle: "Termux",
+  //     app_icon: "https://picsum.photos/seed/app",
+  //     category: "Coding, hacking",
+  //     size_mb: "112",
+  //     description: "this app is terminal emulator for coding and hacking in android os",
+  //     downloads: "12m",
+  //     rating: "⭐ 4.",
+  //     download_button: "http://github.com"
+  //   },
+
+  //   {
+  //     hTitle: "Termux",
+  //     app_icon: "https://picsum.photos/seed/app",
+  //     category: "Coding, hacking",
+  //     size_mb: "112",
+  //     description: "this app is terminal emulator for coding and hacking in android os",
+  //     downloads: "12m",
+  //     rating: "⭐ 4.",
+  //     download_button: "http://github.com"
+  //   },
+
+  //   {
+  //     hTitle: "Termux",
+  //     app_icon: "https://picsum.photos/seed/app",
+  //     category: "Coding, hacking",
+  //     size_mb: "112",
+  //     description: "this app is terminal emulator for coding and hacking in android os",
+  //     downloads: "12m",
+  //     rating: "⭐ 4.",
+  //     download_button: "http://github.com"
+  //   },
+
+  // ]
+
+  const { platform } = await params;
   console.log('Route params:', platform);
+  const data =await fetchApps(platform)
+  
   return (
     <main className="min-h-screen bg-gray-50 p-6">
       <div className="max-w-6xl mx-auto">
@@ -28,26 +119,26 @@ export default async function Apps({ params }) {
 
         {/* FLEXBOX APPS LIST */}
         <section className="flex flex-wrap -mx-2">
-          
+
           {/* ---------------- APP CARD (repeat manually) ---------------- */}
-          {Array.from({ length: 12 }).map((_, i) => (
+          {data.map((app, i) => (
             <div key={i} className="px-2 w-full sm:w-1/2 lg:w-1/3 mb-4">
               <article className="bg-white rounded-lg p-4 flex gap-4 hover:shadow-md transition-shadow">
-                
+
                 {/* App Icon */}
                 <img
-                  src={`https://picsum.photos/seed/app${i}/100/100`}
+                  src={`${app.app_icon}${i}/100/100`}
                   alt="App Icon"
                   className="w-16 h-16 rounded-md object-cover flex-none"
                 />
 
                 {/* Details */}
                 <div className="flex-1 min-w-0">
-                  <h2 className="text-lg font-semibold truncate">Sample App {i + 1}</h2>
+                  <h2 className="text-lg font-semibold truncate">{app.hTitle} {i + 1}</h2>
                   <div className="text-sm text-gray-500">Tools • 25 MB</div>
 
                   <p className="mt-2 text-sm text-gray-600 line-clamp-3">
-                    This is a short description of the app. It is static example text.
+                    {app.description}
                   </p>
 
                   <div className="mt-3 flex items-center justify-between">
@@ -59,7 +150,7 @@ export default async function Apps({ params }) {
 
                     {/* Links */}
                     <div className="flex items-center gap-2">
-                      <a href="#" className="text-sm text-indigo-600 hover:underline">
+                      <a href={`/app/${app.hTitle}`} className="text-sm text-indigo-600 hover:underline">
                         Details
                       </a>
                       <a

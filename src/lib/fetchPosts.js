@@ -99,6 +99,136 @@ export async function fetchBlogPostContent(blog_id) {
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export async function fetchApps(platform) {
+  console.log("os")
+  console.log(platform)
+    const data = [
+    {
+      hTitle: "Termux",
+      app_icon: "https://picsum.photos/seed/app",
+      category: "Coding, hacking",
+      size_mb: "112",
+      description: "this app is terminal emulator for coding and hacking in android os",
+      downloads: "12m",
+      rating: "⭐ 4.",
+      download_button: "http://github.com"
+    },
+    {
+      hTitle: "TikTok 42.7.2 Premium APK Free Download - FileCR",
+      app_icon: "https://picsum.photos/seed/app",
+      category: "Coding, hacking",
+      size_mb: "112",
+      description: "Free Download TikTok 42.7.2 Premium MOD Version Unlocked Ad-Free APK for Android. Create, share, and discover short videos.",
+      downloads: "12m",
+      rating: "⭐ 4.",
+      download_button: "http://github.com"
+    },
+    {
+      hTitle: "Termux",
+      app_icon: "https://picsum.photos/seed/app",
+      category: "Coding, hacking",
+      size_mb: "112",
+      description: "this app is terminal emulator for coding and hacking in android os",
+      downloads: "12m",
+      rating: "⭐ 4.",
+      download_button: "http://github.com"
+    },
+
+    {
+      hTitle: "Termux",
+      app_icon: "https://picsum.photos/seed/app",
+      category: "Coding, hacking",
+      size_mb: "112",
+      description: "this app is terminal emulator for coding and hacking in android os",
+      downloads: "12m",
+      rating: "⭐ 4.",
+      download_button: "http://github.com"
+    },
+
+    {
+      hTitle: "Termux",
+      app_icon: "https://picsum.photos/seed/app",
+      category: "Coding, hacking",
+      size_mb: "112",
+      description: "this app is terminal emulator for coding and hacking in android os",
+      downloads: "12m",
+      rating: "⭐ 4.",
+      download_button: "http://github.com"
+    },
+
+    {
+      hTitle: "Termux",
+      app_icon: "https://picsum.photos/seed/app",
+      category: "Coding, hacking",
+      size_mb: "112",
+      description: "this app is terminal emulator for coding and hacking in android os",
+      downloads: "12m",
+      rating: "⭐ 4.",
+      download_button: "http://github.com"
+    },
+
+    {
+      hTitle: "Termux",
+      app_icon: "https://picsum.photos/seed/app",
+      category: "Coding, hacking",
+      size_mb: "112",
+      description: "this app is terminal emulator for coding and hacking in android os",
+      downloads: "12m",
+      rating: "⭐ 4.",
+      download_button: "http://github.com"
+    },
+
+    {
+      hTitle: "Termux",
+      app_icon: "https://picsum.photos/seed/app",
+      category: "Coding, hacking",
+      size_mb: "112",
+      description: "this app is terminal emulator for coding and hacking in android os",
+      downloads: "12m",
+      rating: "⭐ 4.",
+      download_button: "http://github.com"
+    },
+
+  ]
+    return data
+  
+}
+
+
+
+export async function get_app(app_name) {
+  const clean_app_name = decodeURIComponent(app_name)
+  const app = 
+    {
+      hTitle: clean_app_name,
+      app_icon: "https://picsum.photos/seed/app",
+      category: "Coding, hacking",
+      size_mb: "112",
+      description: "this app is terminal emulator for coding and hacking in android os",
+      app_details: "Free Download TikTok 42.7.2 Premium MOD Version Unlocked Ad-Free APK for Android. Create, share, and discover short videos. this app is terminal emulator for coding and hacking in android os",
+      downloads: "12m",
+      rating: "⭐ 4.",
+      download_button: "http://github.com"
+    }
+    return app
+}
+
+
+
 // export async function GET() {
 //   // const ok = await fetchd();
 //   const ok = await fetchm();
