@@ -116,6 +116,7 @@ export async function fetchBlogPostContent(blog_id) {
 export async function fetchApps(platform) {
   console.log("os")
   console.log(platform)
+  const clean_platform = decodeURIComponent(platform)
     const data = [
     {
       hTitle: "Termux",

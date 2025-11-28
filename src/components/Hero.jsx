@@ -9,8 +9,8 @@ const categories = [
   { name: 'Android Apps', icon: 'android', endpoint:"/apps" },
   { name: 'Android Games', icon: 'android', endpoint:"/apps" },
   { name: 'PC Games', icon: 'gamepad', endpoint:"/apps" },
-  { name: 'Ebooks', icon: 'book', endpoint:"/apps" },
-  { name: 'Video Courses', icon: 'video-camera', endpoint:"/apps" },
+  // { name: 'Ebooks', icon: 'book', endpoint:"/apps" },
+  // { name: 'Video Courses', icon: 'video-camera', endpoint:"/apps" },
   { name: 'blogs', icon: 'blog-icon', endpoint:"/blogs" },
 ];
 
@@ -38,7 +38,7 @@ export default function Hero() {
 
   return (
     <div className="bg-white p-4 border-b border-gray-200">
-      <div className="flex space-x-2 overflow-x-auto">
+      <div className="flex flex-wrap space-x-2 overflow-x-auto">
         {categories.map((cat) => (
           <Link key={cat.name} href={`${cat.endpoint}/${cat.name=="blogs"?"":cat.name}`} passHref>
             <button
