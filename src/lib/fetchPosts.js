@@ -121,13 +121,16 @@ export async function fetchApps(platform) {
       .replace(/\s+apps?$/, '')
       .trim()
 
-    return data.filter((row) => {
-      const candidates = [row.platform, row.category, row.os, row.type]
+    const filtered = data.filter((row) => {
+      const candidates = [row.platform, row.category, row.os, row.type, row.name, row.title]
         .filter((value) => typeof value === 'string')
         .map((value) => value.toLowerCase())
 
       return candidates.some((value) => value.includes(normalizedPlatform))
     })
+
+    // If filtering removes everything, return all rows so the page isn't empty.
+    return filtered.length > 0 ? filtered : data
   } catch (err) {
     console.error('Error fetching apps:', err)
     return []

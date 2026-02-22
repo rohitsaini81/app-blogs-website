@@ -121,24 +121,33 @@ export default async function Apps({ params }) {
         <section className="flex flex-wrap -mx-2">
 
           {/* ---------------- APP CARD (repeat manually) ---------------- */}
-          {data.map((app, i) => (
+          {data.map((app, i) => {
+            const title = app.hTitle ?? app.name ?? app.title ?? 'Untitled'
+            const icon =
+              app.app_icon ??
+              app.icon ??
+              app.image ??
+              `https://picsum.photos/seed/app-${i}/100/100`
+            const description =
+              app.description ?? app.short_description ?? app.summary ?? ''
+            return (
             <div key={i} className="px-2 w-full sm:w-1/2 lg:w-1/3 mb-4">
               <article className="bg-white rounded-lg p-4 flex gap-4 hover:shadow-md transition-shadow">
 
                 {/* App Icon */}
                 <img
-                  src={`${app.app_icon}${i}/100/100`}
+                  src={icon}
                   alt="App Icon"
                   className="w-16 h-16 rounded-md object-cover flex-none"
                 />
 
                 {/* Details */}
                 <div className="flex-1 min-w-0">
-                  <h2 className="text-lg font-semibold truncate">{app.hTitle} {i + 1}</h2>
+                  <h2 className="text-lg font-semibold truncate">{title}</h2>
                   <div className="text-sm text-gray-500">Tools • 25 MB</div>
 
                   <p className="mt-2 text-sm text-gray-600 line-clamp-3">
-                    {app.description}
+                    {description}
                   </p>
 
                   <div className="mt-3 flex items-center justify-between">
@@ -150,7 +159,7 @@ export default async function Apps({ params }) {
 
                     {/* Links */}
                     <div className="flex items-center gap-2">
-                      <a href={`/app/${app.hTitle}`} className="text-sm text-indigo-600 hover:underline">
+                      <a href={`/app/${encodeURIComponent(title)}`} className="text-sm text-indigo-600 hover:underline">
                         Details
                       </a>
                       <a
@@ -164,7 +173,7 @@ export default async function Apps({ params }) {
                 </div>
               </article>
             </div>
-          ))}
+          )})}
 
         </section>
 
